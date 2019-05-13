@@ -1,0 +1,14 @@
+*{
+    box-sizing: borde
+    .encabezador-box;
+    margin: 0 auto;
+    padding: 0;
+}
+body{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+}
+.encabezado{
+   /* opacity:0.3;
+   filter:alpha(opacity=30); /* IE < 9.0 */ */
+}
