@@ -12,3 +12,7 @@ body{
    /* opacity:0.3;
    filter:alpha(opacity=30); /* IE < 9.0 */ */
 }
+.imagen-logo{
+  width: 95px;
+  height: 100px;
+}
