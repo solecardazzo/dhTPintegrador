@@ -13,7 +13,8 @@
 /* Articulos */
 /* Center align the text within the three columns below the carousel */
 .marketing{
-  padding: 25px;
+  margin-top: 105px;
+  margin-bottom: 105px;
 
 }
 .marketing .col-lg-4 {
@@ -206,8 +207,8 @@ ul, ol {
 
 /*CSS FAQ*/
 // Just for kicks and layout
-body {
-  margin-top: 30px;
+.preguntas {
+  margin-top: 100px;
   background-color: #eee;
 }
 
