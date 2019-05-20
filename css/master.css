@@ -331,3 +331,22 @@ body {
         border-bottom: 1px solid rgba(0,0,0,.125);
     }
 }
+
+
+
+
+
+.boton-dona{
+  border-radius: 10px;
+  background-image: none;
+  margin-bottom: 20px;
+  border: 2px solid #FF4000;
+  padding: 10px;
+}
+.boton-dona:hover{
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #FF4000;
+  padding: 10px;
+}
