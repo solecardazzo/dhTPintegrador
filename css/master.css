@@ -351,3 +351,19 @@ ul, ol {
   border: 2px solid #FF4000;
   padding: 10px;
 }
+
+
+
+/* Agradecientos */
+
+.titulos-agradecimientos{
+  margin: 30px;
+  font-family: fantasy;
+}
+.agradecimientos{
+  margin: 20px;
+}
+
+.piepagina{
+  padding-top: 20px;
+}
