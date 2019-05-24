@@ -67,7 +67,7 @@
          <img class="rounded-circle" src="img/agrade.jpg" alt="Generic placeholder image" width="140" height="140">
          <h2>Agradecimientos</h2>
          <p>Conoce las empresas que colaboran con nosotros y hacen posible que ayudemos a tontos niños</p>
-         <p><a class="btn btn-secondary" href="agradecimientos.html" role="button">Conoce más </a></p>
+         <p><a class="btn btn-secondary" href="agradecimientos.php" role="button">Conoce más </a></p>
        </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
