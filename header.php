@@ -39,7 +39,7 @@
               <a class="nav-link" href="formulario.php"><span class="fas fa-user"></span> Registrarse</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="formulario.php"><span class="fas fa-sign-in-alt"></span> Iniciar Sesión</a>
+              <a class="nav-link" href="login.php"><span class="fas fa-sign-in-alt"></span> Iniciar Sesión</a>
             </li>
           </ul>
         </div>
