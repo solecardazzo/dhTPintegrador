@@ -1,7 +1,7 @@
 /* CSS Header */
 .imagen-logo{
-  width: 55px;
-  height: 60px;
+  width: 85px;
+  height: 90px;
 }
 .encabezado{
   height: 75px;
@@ -9,6 +9,20 @@
 .title{
   font-family: fantasy;
 }
+.titulo-logo{
+  width: 125px;
+  height: 130px;
+}
+
+/* Carousel */
+.subtitulos-carousel{
+  /* font-family: 'Indie Flower', cursive; */
+  /* font-family: 'Permanent Marker'; */
+}
+.titulo-carousel{
+  font-family: 'Permanent Marker', cursive;
+}
+
 
 /* Articulos */
 /* Center align the text within the three columns below the carousel */
@@ -342,14 +356,17 @@ ul, ol {
   background-image: none;
   margin-bottom: 20px;
   border: 2px solid #FF4000;
-  padding: 10px;
+  padding: 5px 40px;
+  /* font-family: 'Permanent Marker', cursive; */
+  font-size: 25px;
 }
 .boton-dona:hover{
   color: #000000;
   background-color: #ffffff;
   border-radius: 10px;
   border: 2px solid #FF4000;
-  padding: 10px;
+  padding: 5px 40px;
+
 }
 
 
