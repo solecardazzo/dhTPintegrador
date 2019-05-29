@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "Agradecimientos";
-require("header.php");
+require_once("header.php");
 ?>
 
   <section class="agradecimientos">
@@ -30,5 +30,5 @@ require("header.php");
   </section>
 
 <?php
-require("footer.php");
+require_once("footer.php");
 ?>

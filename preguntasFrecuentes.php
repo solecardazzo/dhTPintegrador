@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "FAQ";
-require("header.php");
+require_once("header.php");
 ?>
 
   <div class="container">
@@ -69,5 +69,5 @@ require("header.php");
 
 
 <?php
-require("footer.php");
+require_once("footer.php");
 ?>
