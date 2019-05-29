@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Registro";
+$pageTitle = "Login";
 require("header.php");
 ?>
 
