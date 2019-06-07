@@ -50,7 +50,7 @@ require_once("header.php");
               </div>
               <div class="form-label-group">
                 <p class="text-center">Cargar foto de perfil</p>
-                <input type="file" id="inputavatar" name="avatar">
+                <input type="file" id="inputavatar" name="avatar" value="<?= isset($errores["avatar"])? "": persistir("avatar") ?>>
                 <span class="text-danger"> <?=(isset($errores["avatar"]))? $errores["avatar"]:""?></span>
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrate</button>
