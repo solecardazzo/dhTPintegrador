@@ -28,43 +28,30 @@ require_once("header.php");
             <h5 class="card-title text-center">Registrate</h5>
             <form class="form-signin" action="" method="POST" enctype="multipart/form-data">
               <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" name="nombre" >
+                <input type="text" id="inputUserame" class="form-control" value="<?= isset($errores["nombre"])? "": persistir("nombre") ?>" placeholder="Username" name="nombre" >
                 <label for="inputUserame">Nombre de Usuario</label>
-                <?php if(isset($errores["nombre"])) :?>
-                  <ul class="alert alert-danger">
-                    <?php foreach ($errores as $key => $value) :?>
-                      <?php if($key == "nombre") :?>
-                      <li> <?=$value?></li>
-                    <?php endif; ?>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
+                <span class="text-danger"> <?=(isset($errores["nombre"]))? $errores["nombre"]:""?></span>
               </div>
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email">
+                <input type="email" id="inputEmail" class="form-control" value="<?= isset($errores["enail"])? "": persistir("enail") ?>" placeholder="Email address" name="email">
                 <label for="inputEmail">Email</label>
-                <?php if(isset($errores["email"])) :?>
-                  <ul class="alert alert-danger">
-                    <?php foreach ($errores as $key => $value) :?>
-                      <?php if($key == "email") :?>
-                      <li> <?=$value?></li>
-                    <?php endif; ?>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
+                <span class="text-danger"> <?=(isset($errores["email"]))? $errores["email"]:""?></span>
               </div>
               <hr>
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
                 <label for="inputPassword">Contraseña</label>
+                <span class="text-danger"> <?=(isset($errores["password"]))? $errores["password"]:""?></span>
               </div>
               <div class="form-label-group">
                 <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" name="repassword">
                 <label for="inputConfirmPassword">Confirma tu contraseña</label>
+                <span class="text-danger"> <?=(isset($errores["repassword"]))? $errores["repassword"]:""?></span>
               </div>
               <div class="form-label-group">
                 <p class="text-center">Cargar foto de perfil</p>
                 <input type="file" id="inputavatar" name="avatar">
+                <span class="text-danger"> <?=(isset($errores["avatar"]))? $errores["avatar"]:""?></span>
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrate</button>
               <hr class="my-4">
