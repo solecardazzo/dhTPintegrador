@@ -3,10 +3,10 @@
 require_once("helpers.php");
 require_once("controladores/funciones.php");
 if($_POST){
-  $errores = validar($_POST);
-  if(count($errores)== 0){
+  $errores = validar($_POST, "registro");
+  if(count($errores) == 0){
     $avatar = armarAvatar($_FILES);
-    $usuario = armarUsuario($_POST,$avatar);
+    $usuario = armarUsuario($_POST, $avatar);
     guardarUsuario($usuario);
     header("location: login.php");
     exit;
@@ -29,7 +29,7 @@ require_once("header.php");
             <form class="form-signin" action="" method="POST" enctype="multipart/form-data">
               <div class="form-label-group">
                 <input type="text" id="inputUserame" class="form-control" value="<?= isset($errores["nombre"])? "": persistir("nombre") ?>" placeholder="Username" name="nombre" >
-                <label for="inputUserame">Nombre de Usuario</label>
+                <label for="inputUserame">Nombre </label>
                 <span class="text-danger"> <?=(isset($errores["nombre"]))? $errores["nombre"]:""?></span>
               </div>
               <div class="form-label-group">

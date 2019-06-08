@@ -1,4 +1,31 @@
 <?php
+// cargo las funciones para validar los datos del login
+require_once("controladores/funciones.php");
+if($_POST){
+  $errores = validar($_POST, "login");
+  if(count($errores) == 0){
+    $usuario = buscarPorEmail($_POST["email"]);
+
+    if($usuario == null){
+      $errores["email"] = "Acceso incorrecto al sistema";
+    }else{
+      if(password_verify($_POST["password"], $usuario["password"]) == false){
+        $errores["password"] = "Acceso incorrecto al sistema";
+      }else {
+        seteoUsuario($usuario, $_POST);
+
+        if(validarAcceso()){
+          header("location: perfil.php");
+          exit;
+        }else{
+          header("location: login.php");
+          exit;
+        }
+      }
+    }
+  }
+}
+// Cargo el header de la pagina
 $pageTitle = "Login";
 require_once("header.php");
 ?>
@@ -12,20 +39,22 @@ require_once("header.php");
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">Iniciá sesión</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="" method="POST" enctype="multipart/form-data">
               <div class="form-label-group">
-                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">Nombre de Usuario</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" value="<?= isset($errores["email"])? "": persistir("email") ?>" placeholder="Email address">
+                <label for="inputEmail">Email</label>
               </div>
               <hr>
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
                 <label for="inputPassword">Contraseña</label>
+                <span class="text-danger"> <?=(isset($errores["email"]))? $errores["email"]:""?></span>
+                <span class="text-danger"> <?=(isset($errores["password"]))? $errores["password"]:""?></span>
               </div>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Iniciá sesión</button>
               <div class="d-flex justify-content-center">
                 <label for="">
-                  <input type="checkbox" name="recordarUsuario" value=""  checked > Recordarme
+                  <input type="checkbox" name="recordar" value=""  checked > Recordarme
                 </label>
               </div>
               <br>
