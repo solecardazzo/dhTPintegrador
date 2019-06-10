@@ -13,12 +13,13 @@ if($_POST){
         $errores["password"] = "Acceso incorrecto al sistema";
       }else {
         seteoUsuario($usuario, $_POST);
-
         if(validarAcceso()){
-          header("location: perfil.php");
+          // echo "entre acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+          // dd($_SESSION);
+          header("location: inicio.php");
           exit;
         }else{
-          header("location: login.php");
+          header("location: registro.php");
           exit;
         }
       }
