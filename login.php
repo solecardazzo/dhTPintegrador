@@ -16,7 +16,7 @@ if($_POST){
         if(validarAcceso()){
           // echo "entre acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
           // dd($_SESSION);
-          header("location: inicio.php");
+          header("location: index.php");
           exit;
         }else{
           header("location: registro.php");
@@ -27,8 +27,15 @@ if($_POST){
   }
 }
 // Cargo el header de la pagina
-$pageTitle = "Login";
-require_once("header.php");
+session_start();
+if(isset($_SESSION["email"])){
+  $pageTitle = "Login";
+  require_once("header-login.php");
+}else {
+  $pageTitle = "Login";
+  require_once("header.php");
+}
+
 ?>
 
   <div class="container">

@@ -12,9 +12,17 @@ if($_POST){
     exit;
   }
 }
+
 // Cargo el header de la pagina
-$pageTitle = "Registro";
-require_once("header.php");
+session_start();
+if(isset($_SESSION["email"])){
+  $pageTitle = "Registro";
+  require_once("header-login.php");
+}else {
+  $pageTitle = "Registro";
+  require_once("header.php");
+}
+
 ?>
 
   <div class="container">

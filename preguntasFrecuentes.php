@@ -1,6 +1,14 @@
 <?php
-$pageTitle = "FAQ";
-require_once("header.php");
+session_start();
+
+if(isset($_SESSION["email"])){
+  $pageTitle = "FAQ";
+  require_once("header-login.php");
+}else {
+  $pageTitle = "FAQ";
+  require_once("header.php");
+}
+
 ?>
 
   <div class="container">

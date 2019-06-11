@@ -1,6 +1,14 @@
 <?php
-$pageTitle = "Agradecimientos";
-require_once("header.php");
+session_start();
+
+if(isset($_SESSION["email"])){
+  $pageTitle = "Agradecimientos";
+  require_once("header-login.php");
+}else {
+  $pageTitle = "Agradecimientos";
+  require_once("header.php");
+}
+
 ?>
 
   <section class="agradecimientos">

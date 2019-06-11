@@ -1,10 +1,6 @@
 <?php
 require_once("controladores/funciones.php");
-// dd($_SESSION);
-if(!isset($_SESSION["email"])){
-  header("location: login.php");
-  exit;
-}
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -48,10 +44,13 @@ if(!isset($_SESSION["email"])){
 
           <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-              <span class="fas fa-user"></span><?=$_SESSION["nombre"];?>
+              <a class="nav-link"><img src="archivos/<?=$_SESSION["avatar"];?>" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.php"><span class="fas fa-sign-in-alt"></span> Iniciar Sesión</a>
+              <a class="nav-link"><span></span> Hola <?=$_SESSION["nombre"];?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php"><span class="fas fa-sign-out-alt"></span> Cerrar Sesión</a>
             </li>
           </ul>
         </div>

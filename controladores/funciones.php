@@ -47,9 +47,10 @@ function validar($datos, $tipo){
 function armarAvatar($datos){
   $ext = pathinfo($datos["avatar"]["name"],PATHINFO_EXTENSION);
   //dd($datos);
+  $nombreArchivo = date ("YmdH-i", filemtime($datos["avatar"]["tmp_name"])).".".$ext;
   $archivoSubir = dirname(__DIR__)."/archivos/". date ("YmdH-i", filemtime($datos["avatar"]["tmp_name"])).".".$ext;
   move_uploaded_file($datos["avatar"]["tmp_name"],$archivoSubir);
-  return $archivoSubir;
+  return $nombreArchivo;
 }
 
 function armarUsuario($datos,$archivo){

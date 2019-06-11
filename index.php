@@ -1,7 +1,14 @@
-    <?php
-    $pageTitle = "Home";
-    require_once("header.php");
-    ?>
+<?php
+session_start();
+
+if(isset($_SESSION["email"])){
+  $pageTitle = "Home";
+  require_once("header-login.php");
+}else {
+  $pageTitle = "Home";
+  require_once("header.php");
+}
+?>
 
       <section>
         <div class="bd-example">
