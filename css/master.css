@@ -341,6 +341,7 @@ ul, ol {
 
 // BORDER FIX
 .accordion {
+
     > .card {
         &:not(:first-child) {
             border-top: 0;
@@ -385,7 +386,7 @@ ul, ol {
   font-family: fantasy;
 }
 .agradecimientos{
-  margin: 20px;
+  margin: 60px;
 }
 
 .piepagina{

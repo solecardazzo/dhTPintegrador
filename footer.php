@@ -31,9 +31,9 @@
           <ul class="nav-list">
             <li><a href="#">Home</a></li>
             <li><a href="#">Quienes Somos</a></li>
-            <li><a href="#">Area de Distribución</a></li>
             <li><a href="#">Eventos</a></li>
-            <li><a href="#">Agradecientos</a></li>
+            <li><a href="preguntasFrecuentes.php">Ayudanos</a></li>
+            <li><a href="agradecimientos.php">Agradecientos</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
         </div>

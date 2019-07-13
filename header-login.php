@@ -1,6 +1,5 @@
 <?php
 require_once("controladores/funciones.php");
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +32,6 @@ session_start();
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Quienes somos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Colabora</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contacto</a>

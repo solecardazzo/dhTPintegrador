@@ -27,7 +27,7 @@ if($_POST){
   }
 }
 // Cargo el header de la pagina
-session_start();
+
 if(isset($_SESSION["email"])){
   $pageTitle = "Login";
   require_once("header-login.php");
