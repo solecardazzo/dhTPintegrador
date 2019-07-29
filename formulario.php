@@ -1,20 +1,70 @@
 <?php
-// cargo las funciones para validar los datos del formulario
-require_once("helpers.php");
-require_once("controladores/funciones.php");
-if($_POST){
-  $errores = validar($_POST, "registro");
-  if(count($errores) == 0){
-    $avatar = armarAvatar($_FILES);
-    $usuario = armarUsuario($_POST, $avatar);
-    guardarUsuario($usuario);
-    header("location: login.php");
-    exit;
+require_once("autoload.php");
+if ($_POST){
+  //Esta variable es quien controla si se desea guardar en archivo JSON o en MYSQL
+  $tipoConexion = "MYSQL";
+  // Si la función retorn false, significa que se va a guardar los datos en JSON, de lo contrario se guardará los datos en MYSQL
+  if($tipoConexion=="JSON"){
+    $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_FILES );
+
+    $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
+
+    if(count($errores)==0){
+      $usuarioEncontrado = $json->buscarEmail($usuario->getEmail());
+
+      if($usuarioEncontrado != null){
+        $errores["email"]="Usuario ya registrado";
+      }else{
+        $avatar = $registro->armarAvatar($usuario->getAvatar());
+        $registroUsuario = $registro->armarUsuario($usuario,$avatar);
+
+        $json->guardar($registroUsuario);
+
+        redirect ("login.php");
+      }
+    }
   }
+ else{
+   //Si arriba en la variable $tipoConexion se coloco "MYSQL", entonces genero todo el trabajo pero con MYSQL.
+  //Aquí genero mi objeto usuario, partiendo de la clase Usuario
+  $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_FILES );
+  //Aquí verifico si los datos registrados por el usuario pasan las validaciones
+  $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
+  //De no existir errores entonces:
+  if(count($errores)==0){
+    //Busco a ver si el usuario existe o no en la base de datos
+    $usuarioEncontrado = BaseMYSQL::buscarPorEmail($usuario->getEmail(),$pdo,'users');
+    if($usuarioEncontrado != false){
+      $errores["email"]= "Usuario ya Registrado";
+    }else{
+      //Aquí guardo en el servidor la foto que el usuario seleccionó
+      $avatar = $registro->armarAvatar($usuario->getAvatar());
+      //Aquí procedo a guardar los datos del usuario en la base de datos, ,aquí le paso el objeto PDO, el objeto usuario, la tabla donde se va a guardar los datos y el nombre del archivo de la imagen del usuario.
+      BaseMYSQL::guardarUsuario($pdo,$usuario,'users',$avatar);
+      //Aquí redirecciono el usuario al login
+      header("location: login.php");
+    }
+  }
+
+ }
 }
 
+// // cargo las funciones para validar los datos del formulario
+// require_once("helpers.php");
+// require_once("controladores/funciones.php");
+// if($_POST){
+//   $errores = validar($_POST, "registro");
+//   if(count($errores) == 0){
+//     $avatar = armarAvatar($_FILES);
+//     $usuario = armarUsuario($_POST, $avatar);
+//     guardarUsuario($usuario);
+//     header("location: login.php");
+//     exit;
+//   }
+// }
+//
 // Cargo el header de la pagina
-session_start();
+//session_start();
 if(isset($_SESSION["email"])){
   $pageTitle = "Registro";
   require_once("header-login.php");
@@ -22,6 +72,8 @@ if(isset($_SESSION["email"])){
   $pageTitle = "Registro";
   require_once("header.php");
 }
+
+
 
 ?>
 

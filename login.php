@@ -1,31 +1,87 @@
 <?php
-// cargo las funciones para validar los datos del login
-require_once("controladores/funciones.php");
+require_once("autoload.php");
 if($_POST){
-  $errores = validar($_POST, "login");
-  if(count($errores) == 0){
-    $usuario = buscarPorEmail($_POST["email"]);
+  $tipoConexion = "MYSQL";
+  if($tipoConexion=="JSON"){
+      $usuario = new Usuario($_POST["email"],$_POST["password"]);
+      $errores= $validar->validacionLogin($usuario);
+      if(count($errores)==0){
 
-    if($usuario == null){
-      $errores["email"] = "Acceso incorrecto al sistema";
-    }else{
-      if(password_verify($_POST["password"], $usuario["password"]) == false){
-        $errores["password"] = "Acceso incorrecto al sistema";
-      }else {
-        seteoUsuario($usuario, $_POST);
-        if(validarAcceso()){
-          // echo "entre acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-          // dd($_SESSION);
-          header("location: index.php");
-          exit;
+        $usuarioEncontrado = $json->buscarPorEmail($usuario->getEmail());
+        if($usuarioEncontrado == null){
+          $errores["email"]="Usuario no existe";
         }else{
-          header("location: registro.php");
-          exit;
+          if(Autenticador::verificarPassword($usuario->getPassword(),$usuarioEncontrado["password"] )!=true){
+            $errores["password"]="Error en los datos verifique";
+          }else{
+            Autenticador::seteoSesion($usuarioEncontrado);
+            if(isset($_POST["recordar"])){
+              Autenticador::seteoCookie($usuarioEncontrado);
+            }
+            if(Autenticador::validarUsuario()){
+              redirect("perfil.php");
+            }else{
+              redirect("registro.php");
+            }
+          }
         }
       }
-    }
+  }else{
+
+      $usuario = new Usuario($_POST["email"],$_POST["password"]);
+      $errores= $validar->validacionLogin($usuario);
+      if(count($errores)==0){
+        $usuarioEncontrado = BaseMYSQL::buscarPorEmail($usuario->getEmail(),$pdo,'users');
+        if($usuarioEncontrado == false){
+          $errores["email"]="Usuario no registrado";
+        }else{
+          if(Autenticador::verificarPassword($usuario->getPassword(),$usuarioEncontrado["password"])!=true){
+            $errores["password"]="Error en los datos verifique";
+          }else{
+            Autenticador::seteoSesion($usuarioEncontrado);
+            if(isset($_POST["recordar"])){
+              Autenticador::seteoCookie($usuarioEncontrado);
+            }
+            if(Autenticador::validarUsuario()){
+              header("location: index.php");
+            }else{
+              header("location: registro.php");
+            }
+          }
+        }
+      }
   }
 }
+
+
+
+// // cargo las funciones para validar los datos del login
+// require_once("controladores/funciones.php");
+// if($_POST){
+//   $errores = validar($_POST, "login");
+//   if(count($errores) == 0){
+//     $usuario = buscarPorEmail($_POST["email"]);
+//
+//     if($usuario == null){
+//       $errores["email"] = "Acceso incorrecto al sistema";
+//     }else{
+//       if(password_verify($_POST["password"], $usuario["password"]) == false){
+//         $errores["password"] = "Acceso incorrecto al sistema";
+//       }else {
+//         seteoUsuario($usuario, $_POST);
+//         if(validarAcceso()){
+//           // echo "entre acaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+//           // dd($_SESSION);
+//           header("location: index.php");
+//           exit;
+//         }else{
+//           header("location: registro.php");
+//           exit;
+//         }
+//       }
+//     }
+//   }
+// }
 // Cargo el header de la pagina
 
 if(isset($_SESSION["email"])){
@@ -47,7 +103,7 @@ if(isset($_SESSION["email"])){
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">Iniciá sesión</h5>
-            <form class="form-signin" action="" method="POST" enctype="multipart/form-data">
+            <form class="form-signin" action="" method="POST">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" name="email" value="<?= isset($errores["email"])? "": persistir("email") ?>" placeholder="Email address">
                 <label for="inputEmail">Email</label>
