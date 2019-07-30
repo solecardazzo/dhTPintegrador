@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once("helpers.php");
 
 function validar($datos, $tipo){

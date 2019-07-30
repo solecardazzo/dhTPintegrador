@@ -43,7 +43,7 @@ require_once("controladores/funciones.php");
               <a class="nav-link"><img src="archivos/<?=$_SESSION["avatar"];?>" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"><span></span> Hola <?=$_SESSION["nombre"];?></a>
+              <a class="nav-link"><span></span> Hola <?=$_SESSION["name"];?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.php"><span class="fas fa-sign-out-alt"></span> Cerrar Sesión</a>

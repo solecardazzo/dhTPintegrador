@@ -35,8 +35,8 @@ class Validador{
                 $errores["avatar"]="Error debe subir imagen";
             }else{
                 $nombre = $_FILES["avatar"]["name"];
-                $ext = pathinfo($nombre,PATHINFO_EXTENSION);
-                if($ext != "png" && $ext != "jpg"){
+                $ext = strtolower(pathinfo($nombre,PATHINFO_EXTENSION));
+                if($ext != "png" && $ext != "jpg" && $ext != "jpeg"){
                     $errores["avatar"]="Debe seleccionar archivo png ó jpg";
                 }
             }

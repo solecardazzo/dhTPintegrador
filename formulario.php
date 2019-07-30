@@ -28,6 +28,7 @@ if ($_POST){
    //Si arriba en la variable $tipoConexion se coloco "MYSQL", entonces genero todo el trabajo pero con MYSQL.
   //Aquí genero mi objeto usuario, partiendo de la clase Usuario
   $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_FILES );
+  var_dump($_FILES['avatar']['error']);
   //Aquí verifico si los datos registrados por el usuario pasan las validaciones
   $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
   //De no existir errores entonces:
