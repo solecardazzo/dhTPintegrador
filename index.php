@@ -44,7 +44,7 @@ if(isset($_SESSION["email"])){
                 <div class="carousel-caption d-none d-md-block">
                   <img class="titulo-logo" src="img/logo_baja.png" alt="">
                   <p>
-                    <a href="formulario.php" class="btn boton-dona">Doná</a>
+                    <a href="dona.php" class="btn boton-dona">Doná</a>
                     <h5 class="subtitulos-carousel">Sabemos que es posible</h5>
                     <h5 class="subtitulos-carousel">Si todos colaboramos con un poco</h5>
                   </p>
