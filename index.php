@@ -24,7 +24,7 @@ if(isset($_SESSION["email"])){
                 <div class="carousel-caption d-none d-md-block">
                   <img class="titulo-logo" src="img/logo_baja.png" alt="">
                   <p>
-                    <a href="formulario.php" class="btn boton-dona">Doná</a>
+                    <a href="dona.php" class="btn boton-dona">Doná</a>
                     <h5 class="subtitulos-carousel">Sabemos que es posible</h5>
                     <h5 class="subtitulos-carousel">Si todos colaboramos con un poco</h5>
                   </p>
@@ -34,7 +34,7 @@ if(isset($_SESSION["email"])){
                 <img src="img/carousel02.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h1 class="titulo-carousel">Fundación los niños del mañana</h1>
-                  <a href="formulario.php" class="btn boton-dona">Doná</a>
+                  <a href="dona.php" class="btn boton-dona">Doná</a>
                   <h5>Sabemos que es posible</h5>
                   <p>Si todos colaboramos con un poco</p>
                 </div>
