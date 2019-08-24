@@ -27,7 +27,7 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Quienes somos</a>
+              <a class="nav-link" href="quienes-somos.php">Quienes somos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contacto</a>
