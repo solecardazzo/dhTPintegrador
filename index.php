@@ -69,7 +69,7 @@ if(isset($_SESSION["email"])){
          <img class="rounded-circle" src="img/hogar.jpg" alt="Generic placeholder image" width="140" height="140">
          <h2>Eventos</h2>
          <p>Todas las ultimas novedades de nuestra fundacion, los proximos eventos y lo que fuimos haciendo hasta ahora</p>
-         <p><a class="btn btn-secondary" href="#" role="button">Conoce más </a></p>
+         <p><a class="btn btn-secondary" href="eventos.php" role="button">Conoce más </a></p>
        </div><!-- /.col-lg-4 -->
        <div class="col-lg-4">
          <img class="rounded-circle" src="img/preg_frec.jpg" alt="Generic placeholder image" width="140" height="140">
