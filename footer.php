@@ -29,12 +29,12 @@
         <div class="col-md-4 col-xl-3">
           <h5>Nuestro Sitio</h5>
           <ul class="nav-list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Quienes Somos</a></li>
-            <li><a href="#">Eventos</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="quienes-somos.php">Quienes Somos</a></li>
+            <li><a href="eventos.php">Eventos</a></li>
             <li><a href="preguntasFrecuentes.php">Ayudanos</a></li>
             <li><a href="agradecimientos.php">Agradecientos</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
           </ul>
         </div>
       </div>
