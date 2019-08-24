@@ -30,7 +30,7 @@
               <a class="nav-link" href="quienes-somos.php">Quienes somos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
+              <a class="nav-link" href="contacto.php">Contacto</a>
             </li>
           </ul>
 
